@@ -37,6 +37,16 @@ const showCards = function() {
     '>';
 };
 
+const displayYouLose = function() {
+  document.getElementById('start').innerHTML =
+    '<h1>' +
+    'You Lose!' +
+    '\nYour score is ' +
+    score +
+    '</h1>' +
+    '<button onclick="location.reload()">Restart</button>';
+};
+
 const changeImage = function(picture, id) {
   document.getElementById(id).src = picture;
   let image = document.images;
@@ -49,15 +59,7 @@ const changeImage = function(picture, id) {
       imagesList = shuffler(imagesList);
       flipCards();
     } else {
-      setTimeout(function() {
-        document.getElementById('start').innerHTML =
-          '<h1>' +
-          'You Lose!' +
-          '\nYour score is ' +
-          score +
-          '</h1>' +
-          '<button onclick="location.reload()">Restart</button>';
-      }, 1000);
+      setTimeout(displayYouLose, 1000);
       showCards();
     }
   }, 500);
